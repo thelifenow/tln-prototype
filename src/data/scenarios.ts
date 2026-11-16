@@ -1,6 +1,6 @@
 import type { CaptureMode, CostRow, Do, FilledForm, Mapping, Planning, Waymark } from '../types';
 import { hi, lo, med } from '../lib/field';
-import { addDays, nextMonthDay, prettyDate, today } from '../lib/dates';
+import { addDays, monthDay, nextMonthDay, today } from '../lib/dates';
 import { uid } from '../lib/id';
 import { HANDWRITING_LINES } from './handwriting';
 
@@ -229,13 +229,13 @@ export const SCENARIOS: Scenario[] = [
         scenarioId: 'vision',
         classification: { value: 'planning', confidence: 'high', signals: ['called to', 'deadline', 'finish line', 'list of steps'] },
         startingPoint: 'Seeking Clarity',
-        heard: `You are called to finish the book, eleven of fourteen chapters in, by ${prettyDate(by)}.`,
+        heard: `You are called to finish the book, eleven of fourteen chapters in, by ${monthDay(by)}.`,
         oneRightAction: { text: 'Write the first page of chapter 12.', source: 'finishing chapters 12, 13 and 14' },
         forms,
         proposals: [
           {
             id: uid('pr'),
-            question: `Start a new initiative called "Finish the book", finished by ${prettyDate(by)}?`,
+            question: `Start a new initiative called "Finish the book", finished by ${monthDay(by)}?`,
             actions: [{ kind: 'addInitiative', initiative: { id: iid, number: n, lane: 'Prepare', name: 'Finish the book', degree: 3, status: 'active', vision: 'Finish The Life NOW book: all fourteen chapters, ready for the editor.', youAreHere: 'Eleven of fourteen chapters drafted; the last three are only notes.', finishedWhen: 'The whole manuscript is in my editor’s hands.', parentId: 'i2', finishedBy: by, sourceEntryId: entryId }, waymarks, dos }],
             confirmsForms: [0, 1, 2],
             status: 'pending',
@@ -534,7 +534,7 @@ export const SCENARIOS: Scenario[] = [
             seed: { id: uid('seed'), text: 'TLN circle: six people, every other Tuesday, walking through the planner', why: 'Not now: your days are full with your current initiatives.', savedOn: t, sourceEntryId: entryId },
           },
         ],
-        autoSummary: ['Saved to the Seed Vault: TLN circle'],
+        autoSummary: ['Saved to the Seed Vault: TLN circle.', 'Not now: your days are already full with your current initiatives, so it will keep until there is room.'],
         links: [
           { label: '→ Seed Vault: TLN circle', source: 'What if we started a TLN circle' },
           { label: '→ Count the Cost: not now', source: 'every other Tuesday night' },

@@ -45,3 +45,8 @@ export function isSabbath(d = new Date()): boolean {
   const h = d.getHours();
   return (day === 5 && h >= 18) || (day === 6 && h < 18);
 }
+
+export function monthDay(iso?: ISODate): string {
+  if (!iso) return '';
+  return parseISODate(iso).toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
+}
