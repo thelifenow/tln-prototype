@@ -5,6 +5,8 @@ import { Today } from './screens/Today';
 import { Season } from './screens/Season';
 import { Journal } from './screens/Journal';
 import { Menu } from './components/Menu';
+import { DataSheet } from './components/DataSheet';
+import { Blueprint } from './blueprint/Blueprint';
 
 export default function App() {
   const ui = useUi();
@@ -14,14 +16,16 @@ export default function App() {
         Skip to content
       </a>
       <Header />
-      <main id="main" className="mx-auto max-w-xl px-4 py-5">
+      <main id="main" className={`mx-auto px-4 py-5 ${ui.screen === 'blueprint' ? 'max-w-5xl' : 'max-w-xl'}`} data-feedback-id={`screen-${ui.screen}`}>
         {ui.screen === 'slate' && <Slate />}
         {ui.screen === 'today' && <Today />}
         {ui.screen === 'season' && <Season />}
         {ui.screen === 'journal' && <Journal />}
+        {ui.screen === 'blueprint' && <Blueprint />}
       </main>
       <TabBar />
       <Menu />
+      <DataSheet />
       {ui.toast && (
         <div role="status" className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full bg-ink px-4 py-2 text-sm text-white shadow-lg">
           {ui.toast}
