@@ -98,7 +98,7 @@ export function FeedbackPanel() {
           {comments.map((c) => (
             <li key={c.id} className="rounded-xl border border-line bg-card p-3">
               <div className="flex items-center gap-2 text-xs text-muted">
-                <span className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold text-white ${c.resolved ? 'bg-[#8C877C]' : 'bg-[#C77C02]'}`}>{c.number}</span>
+                <span className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold text-white ${c.resolved ? 'bg-[#8C877C]' : 'bg-[#9A5B00]'}`}>{c.number}</span>
                 <span className="font-semibold text-ink">{c.type}</span>
                 <span>· {SCREEN_LABEL[c.screen]} · {prettyDateTime(c.createdAt)}</span>
                 {c.resolved && <span>· resolved</span>}

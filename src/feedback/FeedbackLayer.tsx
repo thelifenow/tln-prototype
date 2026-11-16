@@ -200,7 +200,7 @@ export function FeedbackLayer() {
             onClick={() => setThread(c)}
             aria-label={`Comment ${c.number}: ${c.text}`}
             style={{ left: x - 16, top: y - 16 }}
-            className={`fixed z-[35] flex h-8 w-8 items-center justify-center rounded-full rounded-bl-none border-2 border-white text-sm font-bold shadow-md ${c.resolved ? 'bg-[#8C877C] text-white' : 'bg-[#C77C02] text-white'}`}
+            className={`fixed z-[35] flex h-8 w-8 items-center justify-center rounded-full rounded-bl-none border-2 border-white text-sm font-bold shadow-md ${c.resolved ? 'bg-[#8C877C] text-white' : 'bg-[#9A5B00] text-white'}`}
           >
             {c.number}
           </button>

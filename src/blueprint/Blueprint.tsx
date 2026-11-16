@@ -68,7 +68,7 @@ function ListView({ counts, onOpen }: { counts: Record<string, number>; onOpen: 
                       <span className={`block font-medium ${n.highlighted ? 'text-accent-ink' : ''}`}>{n.label}</span>
                       {n.sublabel && <span className="block text-sm text-muted">{n.sublabel}</span>}
                     </span>
-                    {counts[n.id] ? <span className="rounded-full bg-[#C77C02] px-2 py-0.5 text-xs font-bold text-white" aria-label={`${counts[n.id]} open items`}>{counts[n.id]}</span> : null}
+                    {counts[n.id] ? <span className="rounded-full bg-[#9A5B00] px-2 py-0.5 text-xs font-bold text-white" aria-label={`${counts[n.id]} open items`}>{counts[n.id]}</span> : null}
                     <IconArrow size={18} className="text-muted" />
                   </button>
                 </li>

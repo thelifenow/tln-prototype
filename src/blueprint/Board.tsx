@@ -213,7 +213,7 @@ export function Board({ nodes, edges, openCounts, selected, arrowFrom, onNode }:
                   )}
                   {count > 0 && (
                     <g transform={`translate(${NODE_W - 4},4)`}>
-                      <circle r={12} fill="#C77C02" />
+                      <circle r={12} fill="#9A5B00" />
                       <text textAnchor="middle" y={4.5} fontFamily="Inter, sans-serif" fontSize={12} fontWeight={700} fill="#FFFFFF">
                         {count}
                       </text>
