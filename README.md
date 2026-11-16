@@ -20,7 +20,7 @@ Node 18+ is required.
 `npm run build` writes plain static files to `dist/`. The build uses relative paths (`base: './'`), so it works at a domain root or in a subfolder.
 
 - **Netlify / Cloudflare Pages / Vercel:** build command `npm run build`, output directory `dist`.
-- **GitHub Pages:** push the contents of `dist/` to a `gh-pages` branch, or use a Pages action that runs `npm run build` and uploads `dist/`.
+- **GitHub Pages (set up in this repo):** `.github/workflows/deploy.yml` builds on every push to `main` (and the prototype branch) and publishes `dist/` to the `gh-pages` branch. One-time setting: *Settings → Pages → Build and deployment → Source: Deploy from a branch → `gh-pages` / root*. The site is then at `https://thelifenow.github.io/tln-prototype/`.
 - **Anywhere else:** copy `dist/` to any web server. HTTPS is needed for the service worker, the microphone and "Add to Home Screen" (except on `localhost`).
 
 It is an installable **PWA**: open it once on a phone, choose *Add to Home Screen*, and it opens offline after that first load.
