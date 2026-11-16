@@ -7,6 +7,8 @@ import { Journal } from './screens/Journal';
 import { Menu } from './components/Menu';
 import { DataSheet } from './components/DataSheet';
 import { Blueprint } from './blueprint/Blueprint';
+import { FeedbackLayer } from './feedback/FeedbackLayer';
+import { FeatureForm, FeedbackPanel } from './feedback/FeedbackPanel';
 
 export default function App() {
   const ui = useUi();
@@ -26,6 +28,9 @@ export default function App() {
       <TabBar />
       <Menu />
       <DataSheet />
+      <FeedbackPanel />
+      <FeatureForm />
+      <FeedbackLayer />
       {ui.toast && (
         <div role="status" className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full bg-ink px-4 py-2 text-sm text-white shadow-lg">
           {ui.toast}

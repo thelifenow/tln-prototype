@@ -25,3 +25,4 @@ mark.src { background: #F6E3A6; color: inherit; border-radius: 3px; padding: 0 2
 .feedback-on [data-feedback-id] { cursor: crosshair; }
 .feedback-on [data-feedback-id]:hover { outline: 2px dashed #C77C02; outline-offset: 2px; }
 .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+.feedback-on main[data-feedback-id]:hover { outline: none; }

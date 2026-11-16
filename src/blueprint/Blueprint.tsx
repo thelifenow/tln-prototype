@@ -9,6 +9,7 @@ import { ItemRow, PRIORITIES, RELEASES, STATUSES, TYPES } from './Items';
 import { Btn, Field, Select, Sheet, inputCls } from '../components/ui';
 import { IconArrow, IconGrid, IconList, IconPlus } from '../components/Icons';
 import { byPriority } from '../lib/exporters';
+import { DevPanel } from '../underfloor/Machinery';
 
 type Tab = 'board' | 'all' | 'mvp' | 'questions';
 
@@ -214,6 +215,13 @@ export function Blueprint() {
       {tab === 'mvp' && <div className="mt-3"><p className="mb-2 text-sm text-muted">Release = MVP, sorted by priority.</p><FlatList items={mvp} onOpen={setOpen} /></div>}
       {tab === 'questions' && <div className="mt-3"><p className="mb-2 text-sm text-muted">Type = Question, not dropped.</p><FlatList items={questions} onOpen={setOpen} /></div>}
 
+      {ui.underFloor && (
+        <DevPanel title="blueprint store (types.ts: Node, Edge, Item, Comment, FeatureRequest)">
+          <div>localStorage key: tln.workspace.v1 · survives Reset demo</div>
+          <div>nodes={ws.nodes.length} edges={ws.edges.length} items={ws.items.length} comments={ws.comments.length} featureRequests={ws.featureRequests.length}</div>
+          <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap rounded border border-dev-line bg-black/30 p-2">{JSON.stringify(node ?? ws.nodes.find((n) => n.highlighted), null, 2)}</pre>
+        </DevPanel>
+      )}
       <NodeDrawer node={node} onClose={() => setOpen(null)} onOpen={setOpen} />
       <AddNodeSheet open={adding} onClose={() => setAdding(false)} onAdded={(id) => { setAdding(false); setOpen(id); }} />
     </div>

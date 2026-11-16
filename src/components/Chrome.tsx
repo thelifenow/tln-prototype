@@ -43,7 +43,7 @@ export function Header() {
       {ui.feedbackMode && (
         <div className="border-t border-[#E9C77A] bg-[#FDF0D5] text-[#5C3800]">
           <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-2 px-4 py-1.5 text-sm">
-            <span className="flex-1 min-w-[10rem]">Feedback mode: tap anything to pin a comment.</span>
+            <span className="flex-1 min-w-0 truncate">Tap anything to comment.</span>
             <button type="button" className="tap gap-1 px-2 font-semibold" onClick={() => ui.setOverlay('feature-form')}>
               <IconPlus size={18} /> Feature
             </button>

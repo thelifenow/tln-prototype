@@ -41,9 +41,10 @@ export function Sheet({ open, onClose, title, children, wide, fid }: { open: boo
         aria-modal="true"
         aria-label={title}
         data-feedback-id={fid}
+        data-feedback-ui={fid ? undefined : ''}
         className={`absolute bottom-0 left-0 right-0 max-h-[88vh] overflow-y-auto rounded-t-2xl bg-paper shadow-xl outline-none md:bottom-0 md:left-auto md:top-0 md:max-h-none md:rounded-none md:rounded-l-2xl ${wide ? 'md:w-[560px]' : 'md:w-[440px]'}`}
       >
-        <div className="sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-line bg-paper/95 px-4 py-2 backdrop-blur">
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-line bg-paper/95 px-4 py-2 backdrop-blur" data-feedback-ui>
           <div className="mx-auto h-1 w-10 rounded bg-line md:hidden absolute left-1/2 top-1.5 -translate-x-1/2" aria-hidden="true" />
           <h2 className="font-heading text-lg font-semibold pt-1">{title}</h2>
           <button type="button" onClick={onClose} aria-label="Close" className="tap -mr-2">
