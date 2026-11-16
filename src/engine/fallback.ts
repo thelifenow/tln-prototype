@@ -26,7 +26,7 @@ function sentences(text: string): string[] {
 function cleanTask(s: string): string {
   let t = s.replace(/^(i|we)\s+(really\s+)?(need to|have to|must|should|am going to|'m going to|want to|plan to|gonna)\s+/i, '');
   t = t.replace(/^(remember to|tomorrow,?\s*(i\s+)?(need to|will)?\s*)/i, '');
-  t = t.replace(/[.!?]+$/, '').trim();
+  t = t.replace(/[.!?]+$/, '').replace(/\s+(today|tomorrow|tonight|this (morning|afternoon|evening))$/i, '').trim();
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
 
@@ -163,10 +163,15 @@ export function ruleBasedMapping(text: string, p: Planning, entryId: string): Ma
   if (!planning && !feel) notes.flags.push('Low signal: nothing matched. Kept as a journal entry.');
 
   const first = ss[0] ?? text;
+  const doneUnmatched = !planning && ss.some((s) => DONE.test(s));
+  if (doneUnmatched) {
+    signals.push('done (no matching Do)');
+    notes.flags.push('Past-tense "done" language, but no open Do matched. Kept as a journal entry.');
+  }
   return {
     engine: 'rules',
     classification: { value, confidence: planning ? 'medium' : 'low', signals },
-    heard: value === 'journal' ? 'Thank you for writing it down. It’s kept just as you wrote it.' : `I heard: "${first.length > 90 ? first.slice(0, 88) + '…' : first}"`,
+    heard: doneUnmatched ? 'You got it done. It’s written down.' : value === 'journal' ? 'Thank you for writing it down. It’s kept just as you wrote it.' : `I heard: "${first.length > 90 ? first.slice(0, 88) + '…' : first}"`,
     oneRightAction: right ?? { text: value === 'journal' ? 'Nothing more is needed right now.' : 'Pick the next Do on Today and start it.' },
     forms,
     proposals: proposals.slice(0, 2),
